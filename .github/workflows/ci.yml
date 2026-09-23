@@ -6,31 +6,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+# colcon test runs ament_flake8, ament_pep257, ament_lint_cmake and
+# ament_xmllint, each configured for its own distro. That is the only
+# lint config this repo keeps - a second hand-rolled one drifts from it.
 jobs:
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install linters
-        run: pip install flake8 flake8-quotes flake8-import-order
-
-      - name: Byte-compile
-        run: python -m compileall -q launch script
-
-      - name: flake8
-        run: flake8 --max-line-length 99 launch script
-
-      # Docstring style is checked by ament_pep257 in the colcon job, which is
-      # the authority on which pydocstyle codes apply. Don't duplicate the list
-      # here - it drifts and then CI disagrees with itself.
-
-  build:
+  colcon:
     name: colcon (${{ matrix.ros_distro }})
     runs-on: ubuntu-latest
     strategy:
