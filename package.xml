@@ -2,12 +2,19 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>isaac-sim-mobile-robot-rtab-map</name>
-  <version>0.0.0</version>
+  <version>0.1.0</version>
   <description>Mapping, Navigation, and Simulation with RTAB-Map, Navigation2, RViz2, and Isaac Sim</description>
-  <maintainer email="saurabhkhimesra99@gmail.com">saurabh khimesra</maintainer>
+  <maintainer email="saurabhkhimesra99@gmail.com">Saurabh Khimesra</maintainer>
   <license>MIT</license>
+  <url type="repository">https://github.com/SaurabhKhimesra/SLAM-with-RTAB</url>
+  <url type="bugtracker">https://github.com/SaurabhKhimesra/SLAM-with-RTAB/issues</url>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>rtabmap_demos</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
