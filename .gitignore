@@ -1,0 +1,21 @@
+# Isaac Sim / Omniverse
+.thumbs/
+*.usd.bak
+omni.*.log
+
+# ROS 2 / colcon
+build/
+install/
+log/
+
+# RTAB-Map databases
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
