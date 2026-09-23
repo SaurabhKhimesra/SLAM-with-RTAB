@@ -1,5 +1,7 @@
 # Isaac Sim + RTAB-Map + Nav2
 
+[![CI](https://github.com/SaurabhKhimesra/SLAM-with-RTAB/actions/workflows/ci.yml/badge.svg)](https://github.com/SaurabhKhimesra/SLAM-with-RTAB/actions/workflows/ci.yml)
+
 A TurtleBot3 driving around a small indoor scene in NVIDIA Isaac Sim, mapping with
 RTAB-Map and navigating with Nav2. Isaac Sim publishes the sensors, odometry and TF
 over the ROS 2 bridge; the launch files here bring up SLAM, the navigation stack and

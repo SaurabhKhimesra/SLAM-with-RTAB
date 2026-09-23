@@ -1,2 +1,7 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Never let normalization touch these
+*.usd binary
+*.png binary
+*.pdf binary

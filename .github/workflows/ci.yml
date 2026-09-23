@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install linters
+        run: pip install flake8 pydocstyle
+
+      - name: Byte-compile
+        run: python -m compileall -q launch script
+
+      - name: flake8
+        run: flake8 --max-line-length 99 launch script
+
+      - name: pep257
+        run: pydocstyle --select=D101,D102,D103,D200,D201,D202,D205,D209,D400 launch script
+
+  build:
+    name: colcon (${{ matrix.ros_distro }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ros_distro: [humble, jazzy]
+    container:
+      image: ros:${{ matrix.ros_distro }}-ros-base
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src/isaac_sim_mobile_robot_rtab_map
+
+      - name: Install build and lint dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            python3-colcon-common-extensions \
+            ros-${{ matrix.ros_distro }}-ament-lint-auto \
+            ros-${{ matrix.ros_distro }}-ament-lint-common
+          rm -rf /var/lib/apt/lists/*
+
+      - name: Build
+        shell: bash
+        run: |
+          source /opt/ros/${{ matrix.ros_distro }}/setup.bash
+          colcon build --symlink-install
+
+      - name: Test
+        shell: bash
+        run: |
+          source /opt/ros/${{ matrix.ros_distro }}/setup.bash
+          colcon test --event-handlers console_direct+
+          colcon test-result --verbose
