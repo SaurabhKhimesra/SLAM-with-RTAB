@@ -158,6 +158,18 @@ Sim reads it when it starts, not when you press Play.
 - [Nav2](https://docs.nav2.org/)
 - [tf2](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Introduction-To-Tf2.html)
 
+## Credits
+
+This project builds on [`taherfattahi/isaac-sim-mobile-robot-rtab-map`](https://github.com/taherfattahi/isaac-sim-mobile-robot-rtab-map)
+by Taher Fattahi. The Isaac Sim stage (`ros2-turtlebot.usd`) and the five ActionGraphs
+inside it, the original launch wrappers and `run-sim.py`, and the ActionGraph and
+`view_frames` captures in `images/` are his work. What I added on top is the ROS 2
+packaging (snake_case package name, declared runtime dependencies), a fix for the
+`rtabmap_demos` launch path after upstream moved its demos into per-robot subfolders,
+`use_sim_time` plumbed through the wrappers, CI on Humble and Jazzy, and the
+documentation of the topics, frames and TF tree the stage actually publishes. The
+[demo video](https://youtu.be/MkWIAPUYG_Y) is my own run of it.
+
 ## Licence
 
 MIT — see [LICENSE](LICENSE).
