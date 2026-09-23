@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>isaac-sim-mobile-robot-rtab-map</name>
+  <name>isaac_sim_mobile_robot_rtab_map</name>
   <version>0.1.0</version>
   <description>Mapping, Navigation, and Simulation with RTAB-Map, Navigation2, RViz2, and Isaac Sim</description>
   <maintainer email="saurabhkhimesra99@gmail.com">Saurabh Khimesra</maintainer>

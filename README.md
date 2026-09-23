@@ -12,8 +12,8 @@ RViz2 on top of them.
 ## Environment
 
 The stage was saved from Isaac Sim 4.2.0, and the launch files target ROS 2 Humble on
-Ubuntu 22.04. Other versions will probably work, but the topics and frames listed below
-are what this stage actually publishes.
+Ubuntu 22.04. CI builds them on Humble and Jazzy. Other versions will probably work, but
+the topics and frames listed below are what this stage actually publishes.
 
 ## Setup
 
@@ -33,7 +33,7 @@ Then build:
 
 ```bash
 mkdir -p ~/ros2_ws/src && cd ~/ros2_ws/src
-git clone https://github.com/SaurabhKhimesra/SLAM-with-RTAB.git isaac-sim-mobile-robot-rtab-map
+git clone https://github.com/SaurabhKhimesra/SLAM-with-RTAB.git isaac_sim_mobile_robot_rtab_map
 cd ~/ros2_ws
 colcon build --symlink-install
 source install/setup.bash
@@ -48,25 +48,25 @@ GUI and press Play, or let the script do it (`python.sh` lives in your Isaac Sim
 directory):
 
 ```bash
-./python.sh ~/ros2_ws/src/isaac-sim-mobile-robot-rtab-map/script/run-sim.py
+./python.sh ~/ros2_ws/src/isaac_sim_mobile_robot_rtab_map/script/run-sim.py
 ```
 
 **2. RTAB-Map:**
 
 ```bash
-ros2 launch isaac-sim-mobile-robot-rtab-map rtab-map-scan.launch.py
+ros2 launch isaac_sim_mobile_robot_rtab_map rtabmap_scan.launch.py
 ```
 
 **3. Nav2:**
 
 ```bash
-ros2 launch isaac-sim-mobile-robot-rtab-map navigation2.launch.py
+ros2 launch isaac_sim_mobile_robot_rtab_map navigation2.launch.py
 ```
 
 **4. RViz2:**
 
 ```bash
-ros2 launch isaac-sim-mobile-robot-rtab-map rviz.launch.py
+ros2 launch isaac_sim_mobile_robot_rtab_map rviz.launch.py
 ```
 
 Once `/map` and the costmaps appear in RViz2, send the robot somewhere with **2D Goal
@@ -107,7 +107,7 @@ and the sensor frames at 60 Hz.
 
 They are thin wrappers around the stock demos rather than custom bringup:
 
-- `rtab-map-scan.launch.py` includes `turtlebot3_scan.launch.py` from `rtabmap_demos`
+- `rtabmap_scan.launch.py` includes `turtlebot3_scan.launch.py` from `rtabmap_demos`
 - `navigation2.launch.py` includes `navigation_launch.py` from `nav2_bringup`
 - `rviz.launch.py` includes `rviz_launch.py` from `nav2_bringup`
 
@@ -118,7 +118,7 @@ The first two take a `use_sim_time` argument (default `true`) and pass it down.
 
 ```
 launch/
-  rtab-map-scan.launch.py    RTAB-Map SLAM against /scan
+  rtabmap_scan.launch.py     RTAB-Map SLAM against /scan
   navigation2.launch.py      Nav2 bringup
   rviz.launch.py             RViz2 with the Nav2 displays
 isaac-sim/
@@ -130,7 +130,7 @@ images/
 
 ## Troubleshooting
 
-**`FileNotFoundError` from `rtab-map-scan.launch.py`.** `rtabmap_demos` moved its demos
+**`FileNotFoundError` from `rtabmap_scan.launch.py`.** `rtabmap_demos` moved its demos
 into per-robot subfolders in December 2024, so `turtlebot3_scan.launch.py` now lives under
 `launch/turtlebot3/`. The launch file searches for it either way — if it still comes up
 empty, `ros-humble-rtabmap-ros` is not installed.

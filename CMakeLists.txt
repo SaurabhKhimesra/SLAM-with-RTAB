@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(isaac-sim-mobile-robot-rtab-map)
+project(isaac_sim_mobile_robot_rtab_map)
 
 find_package(ament_cmake REQUIRED)
 
