@@ -1,3 +1,4 @@
+"""Nav2 bringup wired to the Isaac Sim topics."""
 import os
 
 from ament_index_python.packages import get_package_share_directory

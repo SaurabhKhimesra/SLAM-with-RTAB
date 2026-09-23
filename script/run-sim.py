@@ -12,18 +12,18 @@ import sys
 from omni.isaac.kit import SimulationApp
 
 # SimulationApp has to be constructed before any other omni.isaac import.
-simulation_app = SimulationApp({"headless": False})
+simulation_app = SimulationApp({'headless': False})
 
-from omni.isaac.core import World  # noqa: E402
-from omni.isaac.core.utils.stage import open_stage  # noqa: E402
+from omni.isaac.core import World  # noqa: E402,I100,I202
+from omni.isaac.core.utils.stage import open_stage  # noqa: E402,I100
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEFAULT_STAGE = os.path.join(REPO_ROOT, "isaac-sim", "ros2-turtlebot.usd")
+DEFAULT_STAGE = os.path.join(REPO_ROOT, 'isaac-sim', 'ros2-turtlebot.usd')
 
 usd_path = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_STAGE
 if not os.path.isfile(usd_path):
     simulation_app.close()
-    raise SystemExit("stage not found: {}".format(usd_path))
+    raise SystemExit('stage not found: {}'.format(usd_path))
 
 open_stage(usd_path=usd_path)
 

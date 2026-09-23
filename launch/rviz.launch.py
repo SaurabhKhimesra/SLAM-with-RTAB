@@ -1,3 +1,4 @@
+"""RViz2 with the Nav2 displays."""
 import os
 
 from ament_index_python.packages import get_package_share_directory
