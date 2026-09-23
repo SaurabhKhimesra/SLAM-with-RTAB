@@ -8,7 +8,8 @@ from launch.substitutions import LaunchConfiguration
 
 
 def find_launch_file(package, filename):
-    """Look up a launch file anywhere under a package's share/launch tree.
+    """
+    Look up a launch file anywhere under a package's share/launch tree.
 
     rtabmap_demos moved its demos into per-robot subfolders (turtlebot3/,
     husky/, ...) in December 2024, so the file sits at launch/turtlebot3/ on

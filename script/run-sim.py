@@ -1,4 +1,5 @@
-"""Open this project's stage in Isaac Sim and step it with the ROS 2 bridge live.
+"""
+Open this project's stage in Isaac Sim and step it with the ROS 2 bridge live.
 
 Run with Isaac Sim's own interpreter, from anywhere:
 

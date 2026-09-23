@@ -18,7 +18,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install linters
-        run: pip install flake8 pydocstyle
+        run: pip install flake8
 
       - name: Byte-compile
         run: python -m compileall -q launch script
@@ -26,8 +26,9 @@ jobs:
       - name: flake8
         run: flake8 --max-line-length 99 launch script
 
-      - name: pep257
-        run: pydocstyle --select=D101,D102,D103,D200,D201,D202,D205,D209,D400 launch script
+      # Docstring style is checked by ament_pep257 in the colcon job, which is
+      # the authority on which pydocstyle codes apply. Don't duplicate the list
+      # here - it drifts and then CI disagrees with itself.
 
   build:
     name: colcon (${{ matrix.ros_distro }})
